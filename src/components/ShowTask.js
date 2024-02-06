@@ -27,8 +27,13 @@ export const ShowTask = ({ taskList, setTaskList, task, setTask }) => {
     setTaskList(updatedTasklist);
   };
 
+  // const handleEdit = (id) => {
+  //   let selectedtask = taskList.find((todo) => todo.id !== id);
+  //   setTask(selectedtask);
+  //   console.log(selectedtask);
+  // };
   const handleEdit = (id) => {
-    let selectedtask = taskList.find((todo) => todo.id !== id);
+    let selectedtask = taskList.find((todo) => todo.id === id);
     setTask(selectedtask);
     console.log(selectedtask);
   };
