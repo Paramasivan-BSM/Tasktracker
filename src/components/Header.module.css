@@ -1,0 +1,39 @@
+#Head {
+  background-color: #eef5ff;
+}
+.themecontainer {
+  display: inline;
+}
+#addtask {
+  background-color: rgba(240, 248, 255, 0.938);
+  padding: 30px;
+}
+#input {
+  width: 500px;
+  height: 40px;
+  margin-right: 40px;
+  border-style: none;
+  border-bottom: 1px solid blue;
+}
+#input:focus {
+  outline: none;
+}
+#cbtn {
+  float: inline-end;
+}
+#showtask {
+  background-color: rgba(240, 248, 255, 0.938);
+  min-height: 200px;
+}
+#ul {
+  background-color: white;
+  display: inline-block;
+  list-style-type: none;
+  min-width: 300px;
+  min-height: 100px;
+  margin: 15px;
+}
+.tt {
+  background-color: blue;
+  text-align: right;
+}
