@@ -4,17 +4,32 @@ import styles from "./Header.module.css";
 export const AddTask = ({ taskList, setTaskList, task, setTask }) => {
   let Handlesubmit = (event) => {
     event.preventDefault();
-    const date = new Date();
     // console.log(date);
     // console.log(e.target.task.value);
 
-    let newTask = {
-      id: date.getTime(),
-      Name: event.target.task.value,
-      Time: `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`,
-    };
-    setTaskList([...taskList, newTask]);
-    event.target.task.value = "";
+    if (task.id) {
+      const date = new Date();
+      const UpdateTaskList = taskList.map((todo) =>
+        todo.id === task.id
+          ? {
+              id: task.id,
+              Name: event.target.task.value,
+              Time: `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`,
+            }
+          : todo
+      );
+      setTaskList(UpdateTaskList);
+      setTask({});
+    } else {
+      const date = new Date();
+      let newTask = {
+        id: date.getTime(),
+        Name: event.target.task.value,
+        Time: `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`,
+      };
+      setTaskList([...taskList, newTask]);
+      setTask({});
+    }
   };
   return (
     <div className="container mt-5  " id={styles.addtask}>
@@ -27,7 +42,8 @@ export const AddTask = ({ taskList, setTaskList, task, setTask }) => {
             className="input"
             id={styles.input}
             autoComplete="off"
-            value={task.Name}
+            value={task.Name || ""}
+            onChange={(event) => setTask({ ...task, Name: event.target.value })}
           />
           <button type="submit" className="btn btn-success" value="AddTask">
             AddTask
